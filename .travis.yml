@@ -1,0 +1,14 @@
+language: ruby
+sudo: false
+before_install: gem install bundler
+before_script: bundle exec ruby -w setup.rb
+script: bundle exec ruby -w repo.rb
+after_script: bundle exec ruby -w teardown.rb
+env:
+  global:
+    - "LISTEN_GEM_DEBUGGING=2"
+  matrix:
+    - "USE_LISTEN=0"
+    - "USE_LISTEN=1"
+rvm:
+  - 2.2.3
