@@ -15,6 +15,15 @@ if ENV['USE_LISTEN'] == '1'
   end
 end
 
-100_000.times do |i|
+str = []
+
+1000.times do
+  str << Array.new(10_000, "a").map { |i| "b" }.join * 10
+  str.pop
+end
+
+5000.times do |i|
+  str << Array.new(10_000, "a").map { |i| "b" }.join * 10
+  str.pop
   File.open("tmp/#{i}.txt") { |f| puts "Opened tmp/#{i}.txt: #{f.read}" }
 end
